@@ -15,6 +15,8 @@ public class Business_page {
 	JavascriptExecutor js;
 	String dataPath=System.getProperty("user.dir")+"\\testData\\Data.xlsx";
 	ExcelUtility excelRead;
+	
+	// Constructor that will be automatically called as soon as the object of the class is created
 	public Business_page(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
@@ -23,6 +25,8 @@ public class Business_page {
 
 	}
 	
+	
+	//Locating all the needed elements for the Scenario
 	@FindBy(xpath="//div[@role='navigation']/a[2]")
 	public WebElement business;
 	
@@ -51,6 +55,9 @@ public class Business_page {
 	@FindBy(id="Country")
 	public WebElement country;
 	
+	@FindBy(id="State")
+	public WebElement state;
+	
 	@FindBy(id="What_the_lead_asked_for_on_the_website__c")
 	public WebElement describe_needs;
 	
@@ -62,16 +69,23 @@ public class Business_page {
 	public WebElement email_error_msg;
 	
 	
+	//Click on contactSales for navigating to form
 	public void go_to_form() {
-		js.executeScript("arguments[0].click()",business);
+		
 		js.executeScript("arguments[0].click()",contactSales);
 		 
 	}
 	
+	//Click on For Business 
+	public void go_to_business_page() {
+		js.executeScript("arguments[0].click()",business);
+	}
+	
+	//Fill the form
 	public void fill_form() {
-		String[] data=new String[8];
-		for(int i=0;i<8;i++) {
-			data[i]=excelRead.getCellData("Sheet2", i, 0);
+		String[] data=new String[9];
+		for(int i=0;i<9;i++) {
+			data[i]=excelRead.getCellData("FormData", i+1, 0);
 		}
 		firstName.sendKeys(data[0]);
 		lastName.sendKeys(data[1]); 
@@ -82,16 +96,16 @@ public class Business_page {
 		s.selectByVisibleText(data[5]);
 		Select s1=new Select(country);
 		s1.selectByVisibleText(data[6]);
-		Select s2=new Select(describe_needs);
+		Select s2=new Select(state);
 		s2.selectByVisibleText(data[7]);
+		Select s3=new Select(describe_needs);
+		s3.selectByVisibleText(data[8]);
 		
 		js.executeScript("arguments[0].click()",submit);	
 		
 	}
 	
-	public void get_error_msg() {
-		System.out.println(email_error_msg.getText());
-	}
+	
 	
 	
 

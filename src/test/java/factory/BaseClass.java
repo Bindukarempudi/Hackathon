@@ -2,7 +2,7 @@ package factory;
 import java.net.URL;
 import java.time.Duration;
 import java.io.FileReader;
-import org.apache.commons.lang3.RandomStringUtils;
+
 import java.io.IOException;
 import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +24,7 @@ public class BaseClass {
     public static WebDriver initilizeBrowser() throws IOException
 	{
 		
+    	
     	if(getProperties().getProperty("execution_env").equalsIgnoreCase("remote"))
 		{
 			DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -99,15 +100,7 @@ public class BaseClass {
    	 j.executeScript("arguments[0].scrollIntoView(true);",element);
     }
     
-    public static void clickElement(WebElement element) {
-   	 JavascriptExecutor j = (JavascriptExecutor) getDriver();
-   	 j.executeScript("arguments[0].click();", element);
-    }
-    public static String randomeString()
-	{
-		String generatedString=RandomStringUtils.randomAlphabetic(5);
-		return generatedString;
-		
-	}
+    
+    
 }
 

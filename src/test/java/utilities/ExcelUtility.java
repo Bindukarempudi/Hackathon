@@ -4,7 +4,7 @@ package utilities;
 import java.io.FileInputStream;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
+
 
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -83,7 +83,7 @@ public class ExcelUtility {
 			workbook.close();
 			fi.close();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 		
@@ -111,7 +111,7 @@ public class ExcelUtility {
 					sheet = workbook.getSheet(sheetName);
 					
 					row = sheet.getRow(rowNumber);
-					//row = sheet.createRow(rowNumber);
+					
 					
 					cell = row.createCell(cellNumber);
 					
@@ -135,13 +135,15 @@ public class ExcelUtility {
 				
 				
 			}
-	public  void write_Data(String sheetName, String data, int rowNo, int colNo) throws IOException {
-				// XSSFSheet sheet = workbook.getSheet(sheetName);
-		FileInputStream file = new FileInputStream(path);
-		XSSFWorkbook workbook = new XSSFWorkbook(file);
-		try {
-			
-
+	
+	
+	
+	public  void write_Data(String sheetName, String data, int rowNo, int colNo) {
+		try {	
+		   
+			FileInputStream file = new FileInputStream(path);
+		
+			workbook = new XSSFWorkbook(file);
 			XSSFSheet sheet = workbook.getSheet(sheetName);
 
 			if (sheet.getRow(rowNo) == null) {
@@ -149,20 +151,14 @@ public class ExcelUtility {
 			}
 			XSSFRow row = sheet.getRow(rowNo);
 			row.createCell(colNo).setCellValue(data);
-		} catch (Exception e) {
-			XSSFSheet sheet = workbook.createSheet(sheetName);
-			
-				if (sheet.getRow(rowNo) == null) {
-					sheet.createRow(rowNo);
-				}
-				XSSFRow row = sheet.getRow(rowNo);
-				row.createCell(colNo).setCellValue(data);
-			
-		}
+
 		FileOutputStream fo = new FileOutputStream(path);
 		workbook.write(fo);
 		file.close();
 		fo.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 
 	}
   

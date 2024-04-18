@@ -3,13 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testRunner.testRunner">
+      <class name="testCases.Identify_courses">
         <methods>
-          <include name="setUpClass"/>
-          <include name="tearDownClass"/>
-          <include name="runScenario" invocation-numbers="0"/>
+          <include name="click_On_First_Course"/>
+          <include name="driverConfig"/>
+          <include name="closeDriver"/>
+          <include name="select_Courses_With_Given_Filters"/>
+          <include name="get_Details_Of_Second_Course"/>
+          <include name="get_The_Details_Of_First_Course"/>
+          <include name="click_On_Second_Course"/>
         </methods>
-      </class> <!-- testRunner.testRunner -->
+      </class> <!-- testCases.Identify_courses -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
