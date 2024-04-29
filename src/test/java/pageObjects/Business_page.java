@@ -30,9 +30,6 @@ public class Business_page {
 	@FindBy(xpath="//div[@role='navigation']/a[2]")
 	public WebElement business;
 	
-	@FindBy(xpath="//span[text()='Contact Sales']")
-	public WebElement contactSales;
-	
 	@FindBy(id="FirstName")
 	public WebElement firstName;
 	
@@ -71,8 +68,8 @@ public class Business_page {
 	
 	//Click on contactSales for navigating to form
 	public void go_to_form() {
+		js.executeScript("arguments[0].scrollIntoView();",firstName);
 		
-		js.executeScript("arguments[0].click()",contactSales);
 		 
 	}
 	
@@ -101,7 +98,8 @@ public class Business_page {
 		Select s3=new Select(describe_needs);
 		s3.selectByVisibleText(data[8]);
 		
-		js.executeScript("arguments[0].click()",submit);	
+		js.executeScript("arguments[0].click()",submit);
+
 		
 	}
 	

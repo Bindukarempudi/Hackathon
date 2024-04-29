@@ -2,6 +2,7 @@ package stepDefinitions;
 
 
 
+
 import org.openqa.selenium.WebDriver;
 
 import factory.BaseClass;
@@ -28,8 +29,8 @@ public class Enterprise_steps {
 	    BaseClass.getLogger().info("User in bussiness page.........");
 	}
 
-	@When("user click on contact sales")
-	public void user_click_on_contact_sales() {
+	@When("user scroll down to form")
+	public void user_scroll_down_to_form() {
 		BaseClass.getLogger().info("Clicking on contact sales in bussiness page.........");
 	    bp.go_to_form();
 	    BaseClass.getLogger().info("Form will appear.........");
@@ -47,8 +48,9 @@ public class Enterprise_steps {
 		BaseClass.getLogger().info("Error message will be displayed.........");
 		BaseClass.getLogger().info("Getting that error message.........");
 		try {
-		BaseClass.scrollToElement(bp.email_error_msg);
+		
 	    error_message=bp.email_error_msg.getText();
+	    
 	    System.out.println("Error message for Invalid email-id: ");
 	    System.out.println(error_message);
 		}
@@ -61,7 +63,7 @@ public class Enterprise_steps {
 	public void store_the_error_message_in_excel_sheet() {
 		BaseClass.getLogger().info("Storing error message into excel sheet.........");
 		 try {
-			excelWrite.write_Data("Sheet3",error_message,1,0);
+			excelWrite.write_Data("Error_Message",error_message,1,0);
 		} catch (Exception e) {
 			
 			e.printStackTrace();

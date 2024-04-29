@@ -34,6 +34,9 @@ public class Home_page {
 	
 	
 	//Locating all the needed elements for the Scenario
+	@FindBy(xpath="//img[@alt='Coursera']")
+	public WebElement coursera;
+	
 	@FindBy(xpath="//input[@role='textbox']")
 	public WebElement searchBox;
 	
@@ -56,6 +59,9 @@ public class Home_page {
 	
 	@FindBy(xpath="//div[@data-e2e='key-information']//div[contains(@class,'css-guxf')]/div[contains(@class,'Typography')]")
 	public WebElement rating1;
+	
+	@FindBy(xpath="//div[@data-e2e='key-information']/section/div/div[1]//div[contains(@class,'Typography')]")
+	public WebElement rating2;
 	
 	@FindBy(xpath="//div[@data-track-component='syllabus']/div/div//span[contains(text(),'hour')]")
 	public List<WebElement> hours;
@@ -138,7 +144,14 @@ public class Home_page {
 		String[] data=new String[3];
 		int totalhrs=0;
 		String nm=name.getText();
-       String  rating=rating1.getText();
+       String  rating="";
+       try {
+    	   rating=rating1.getText();
+       }
+       catch(Exception e) {
+    	   rating=rating2.getText();
+       }
+      
         
         for(WebElement h:hours) {
        	 js.executeScript("arguments[0].scrollIntoView();",h);

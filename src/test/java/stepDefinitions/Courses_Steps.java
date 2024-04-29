@@ -9,6 +9,7 @@ import factory.BaseClass;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 import pageObjects.Home_page;
 import utilities.ExcelUtility;
 
@@ -24,10 +25,13 @@ public class Courses_Steps {
 	
 	@Given("User opens the application with provided URL")
 	public void user_opens_the_application_with_provided_url() {
-		BaseClass.getLogger().info("Opened application with provided URL.........");
+		
     	driver=BaseClass.getDriver();
 		hp=new Home_page(driver);
 	    excel=new ExcelUtility(dataPath);
+	    boolean coursera=hp.coursera.isDisplayed();
+	    Assert.assertEquals(coursera,true);
+	    BaseClass.getLogger().info("Opened application with provided URL.........");
 	}
 
 	@When("User search for {string} courses and clicks on search button")
@@ -79,7 +83,7 @@ public class Courses_Steps {
 	public void add_first_course_data_to_excel() {
 		BaseClass.getLogger().info("Storing first course data into excel sheet.........");
 		for(int i=1;i<=3;i++) {
-		   excel.writeData(dataPath,"Course_Details", i, 1, data[i-1]);
+			 excel.write_Data("Course_Details", data[i-1], i, 1);
 		}
 	}
 
@@ -110,7 +114,7 @@ public class Courses_Steps {
 	public void add_second_course_data_to_excel() {
 		BaseClass.getLogger().info("Storing second course data into excel sheet.........");
 		for(int i=1;i<=3;i++) {
-			   excel.writeData(dataPath,"Course_Details", i, 2, data[i-1]);
+			   excel.write_Data("Course_Details", data[i-1], i, 2);
 			}
 	}
 

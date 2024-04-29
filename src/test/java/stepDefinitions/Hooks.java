@@ -6,7 +6,7 @@ import java.util.Properties;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
 
 import factory.BaseClass;
 import io.cucumber.java.After;
@@ -23,8 +23,6 @@ public class Hooks{
 	@Before
    public void setup() throws IOException
    {
-	ChromeOptions options=new ChromeOptions();
-	options.addArguments("--disable-notifications");
    	driver=BaseClass.initilizeBrowser();
    	    	
    	p=BaseClass.getProperties();
@@ -49,7 +47,7 @@ public class Hooks{
 
        // Get the step name
        String stepName = scenario.getName();
-
+       
        // Save the screenshot with the step name
        if (scenario.isFailed()) {
            scenario.attach(screenshot, "image/png", stepName + "_Failure");

@@ -20,7 +20,7 @@ Detailed Description: Hackath Ideas
 2. Look for Language Learning under Explore menu and click on All Language Courses under popular skills
    Extract all the languages and different levels with its total count & display them
    
-3. In Home page, go to "For Business"; Click on "Contact Sales"; 
+3. In Home page, go to "For Business"; Scroll down to form ; 
    Fill the form with any one input invalid (example: email); Capture the error message & display
    
 
@@ -68,21 +68,10 @@ English
 Spanish
 Arabic
 French
-Portuguese
+Portuguese(Brazil)
 Japanese
 Korean
-Chinese
-
-Levels count: 4
-Level names:
-Beginner
-Intermediate
-Advanced
-Mixed
-
-Error message for Invalid email-id: 
-Must be valid email.
-example@yourdomain.com
+Chinese(China)
 German
 Indonesian
 Ukrainian
@@ -97,9 +86,21 @@ Turkish
 Russian
 Kazakh
 Hungarian
-Chinese
+Chinese(Traditional)
 Hebrew
 Portuguese
+
+Levels count: 4
+Level names:
+Beginner
+Intermediate
+Advanced
+Mixed
+
+Error message for Invalid email-id: 
+Must be valid email.
+example@yourdomain.com
+
 
 Added dependencies:
 ==========

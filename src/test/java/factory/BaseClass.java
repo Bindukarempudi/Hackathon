@@ -2,15 +2,12 @@ package factory;
 import java.net.URL;
 import java.time.Duration;
 import java.io.FileReader;
-
 import java.io.IOException;
 import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -95,10 +92,7 @@ public class BaseClass {
 		return logger;
 	}
     
-    public static void scrollToElement(WebElement element) {
-   	 JavascriptExecutor j = (JavascriptExecutor) getDriver();
-   	 j.executeScript("arguments[0].scrollIntoView(true);",element);
-    }
+    
     
     
     

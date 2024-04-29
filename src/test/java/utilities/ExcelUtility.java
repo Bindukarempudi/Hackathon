@@ -102,41 +102,6 @@ public class ExcelUtility {
 	}
 	
 	//Writing data in to excel sheet
-	public  void writeData(String filename,String sheetName,int rowNumber,int cellNumber, String data) {
-				
-				try {
-					fi = new FileInputStream(filename);
-					workbook = new XSSFWorkbook(fi);
-					
-					sheet = workbook.getSheet(sheetName);
-					
-					row = sheet.getRow(rowNumber);
-					
-					
-					cell = row.createCell(cellNumber);
-					
-					cell.setCellValue(data);
-					
-					
-					fo = new FileOutputStream(filename);
-					
-					workbook.write(fo);
-					
-					workbook.close();
-					
-					fi.close();
-					
-					fo.close();
-				} catch (Exception e) {
-					
-					e.printStackTrace();
-				}
-				
-				
-				
-			}
-	
-	
 	
 	public  void write_Data(String sheetName, String data, int rowNo, int colNo) {
 		try {	

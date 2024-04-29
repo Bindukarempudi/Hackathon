@@ -25,11 +25,13 @@ public class Language_learning_Steps {
 	String data[];
 	@Given("User open the application")
 	public void user_open_the_application() {
-		BaseClass.getLogger().info("Opened application with provided URL.........");
+		
 		driver=BaseClass.getDriver();
 		hp=new Home_page(driver);
 	    excelWrite=new ExcelUtility(path);
 	    excelRead=new ExcelUtility(dataPath);
+	    Assert.assertEquals(hp.coursera.isDisplayed(),true);
+	    BaseClass.getLogger().info("Opened application with provided URL.........");
 	}
 
 	@When("user click on explore dropdown")
@@ -73,8 +75,14 @@ public class Language_learning_Steps {
 	    System.out.println("Language names:");
 	    for(int i=0;i<cnt;i++) {
 	    	String s[]=hp.langs.get(i).getText().split(" ");
-	    	data[i]=s[0];
-	    	System.out.println(s[0]);
+	    	if(s.length==2) {
+	    		data[i]=s[0];
+	    	}
+	    	else {
+	    		data[i]=s[0]+s[1];
+	    	}
+	    	
+	    	System.out.println(data[i]);
 	    }
 	    
 	    
